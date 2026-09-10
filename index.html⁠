@@ -1,4 +1,331 @@
-<audio controls loop>
-  <source src="YOUR_DIRECT_MP3_LINK_HERE.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Tangii ♡ (Blue Edition)</title>
+  <!-- Main Blue Theme Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Blue Theme Color Palette */
+      --bg: #F0F8FF;             /* AliceBlue - Softest base */
+      --card-bg: #FFFFFF;
+      --text-main: #203A5F;      /* Deep, clear blue for text */
+      --text-muted: #627F9E;     /* Muted blue-grey */
+      --blue-primary: #87CEEB;   /* SkyBlue - Lighter primary accents */
+      --blue-soft: #E1F0FF;      /* Very soft pastel blue */
+      --blue-accent: #3498DB;    /* A bit stronger, calming blue */
+      --border: #C6E0F7;         /* Soft blue-sky border */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      /* Blue background pattern - subtle clouds */
+      background-image: 
+        radial-gradient(#EBF5FF 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: var(--text-main);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Sticker Styles - Revamped for Blue */
+    .sticker {
+      position: absolute;
+      background: #FFF;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue-accent);
+      box-shadow: 0 4px 10px rgba(52, 152, 219, 0.1);
+      user-select: none;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .sticker-top-right {
+      top: -15px;
+      right: -10px;
+      transform: rotate(8deg);
+    }
+
+    .sticker-bottom-left {
+      bottom: -10px;
+      left: -10px;
+      transform: rotate(-6deg);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .sub-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--blue-accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(135, 206, 235, 0.1);
+      position: relative;
+    }
+
+    /* Music Player Card - Linear Blue Gradient */
+    .music-card {
+      background: linear-gradient(135deg, #FFF, var(--blue-soft));
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-color: #A3D4FF; /* Slightly warmer blue border */
+    }
+
+    .music-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .album-art {
+      width: 55px;
+      height: 55px;
+      border-radius: 12px;
+      background: #EBF5FF; /* Subtle light blue inside */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-accent);
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .song-details h3 {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .song-details p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Customized Audio Player - for consistency */
+    audio {
+      width: 100%;
+      height: 36px;
+      border-radius: 8px;
+    }
+    audio::-webkit-media-controls-panel {
+      background-color: #EBF5FF;
+    }
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display {
+      color: var(--text-muted);
+    }
+
+    .main-letter p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #384F6F; /* Deep-toned blue for readability */
+      margin-bottom: 16px;
+    }
+
+    .main-letter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin: 30px 0 16px 0;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .accordion-item {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .accordion-header {
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .accordion-header:hover {
+      background-color: var(--blue-soft);
+    }
+
+    .accordion-icon {
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+      color: var(--blue-accent);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #4D6688; /* Blue-grey for content */
+      background: #FDFEFE;
+      padding: 0 20px;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 200px;
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 0.85rem;
+      color: var(--blue-accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="sub-title">✨ A Little Blue Space For You ✨</div>
+      <h1>To My Dearest Tangii</h1>
+    </header>
+
+    <!-- Music Player Card (Blue) -->
+    <div class="card music-card">
+      <div class="music-info">
+        <div class="album-art">🎧</div>
+        <div class="song-details">
+          <h3>Nothing's Gonna Hurt You Baby</h3>
+          <p>Cigarettes After Sex</p>
+        </div>
+      </div>
+      <audio controls loop>
+        <source src="https://ia801503.us.archive.org/15/items/cigarettes-after-sex-nothings-gonna-hurt-you-baby/Cigarettes%20After%20Sex%20-%20Nothing%27s%20Gonna%20Hurt%20You%20Baby.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Letter Card with Blue Stickers -->
+    <div class="card main-letter">
+      <div class="sticker sticker-top-right">💎 Purest love</div>
+      <p>My Tangii,</p>
+      <p>I wanted to build this cozy, calm little corner just to remind you of how deeply you are loved and supported every single day.</p>
+      <p>No matter where life takes us, what challenges come your way, or how tired you feel, please remember that I am right here beside you. You never have to carry everything on your own.</p>
+      <p>I believe in you, in your dreams, and in who you are. I am so proud to be your partner, today and always.</p>
+      <div class="sticker sticker-bottom-left">☁️ Dream together</div>
+    </div>
+
+    <div class="section-title">Open When You Need Me</div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>🌊 Open when you're feeling overwhelmed...</span>
+        <span class="accordion-icon">▼</span>
+      </div>
+      <div class="accordion-content">
+        Take a deep breath, Tangii. Like a calm ocean. Pause for a moment. You are doing enough, and you are more than capable. Step away if you need to—I'm here waiting to listen whenever you're ready.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>✨ Open when you doubt yourself...</span>
+        <span class="accordion-icon">▼</span>
+      </div>
+      <div class="accordion-content">
+        Remember how far you've come. I see your effort, your heart, and your dedication every day. Even when you can't see your own strength, I hold enough belief in you for both of us.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>💌 Open when you miss me...</span>
+        <span class="accordion-icon">▼</span>
+      </div>
+      <div class="accordion-content">
+        Close your eyes for a second. I am holding you close in my heart. Send me a quick message or call—I am always here for my Tangii.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>💖 Open when you need a gentle reminder...</span>
+        <span class="accordion-icon">▼</span>
+      </div>
+      <div class="accordion-content">
+        I love you. Unconditionally, wholeheartedly, and consistently. You are my home, and I will always support you in everything you do.
+      </div>
+    </div>
+
+    <footer>
+      Made with endless love, just for you ♡
+    </footer>
+  </div>
+
+  <script>
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      item.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
